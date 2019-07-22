@@ -1,6 +1,6 @@
 {
   "name": "fastify-no-additional-properties",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Make additionalProperties false by default",
   "main": "index.js",
   "scripts": {
