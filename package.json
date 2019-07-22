@@ -1,7 +1,7 @@
 {
   "name": "fastify-no-additional-properties",
   "version": "0.1.0",
-  "description": "",
+  "description": "Make additionalProperties false by default",
   "main": "index.js",
   "scripts": {
     "test": "eslint index.js",
