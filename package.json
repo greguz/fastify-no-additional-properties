@@ -1,0 +1,35 @@
+{
+  "name": "fastify-no-additional-properties",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint index.js",
+    "prepublishOnly": "npm run test"
+  },
+  "keywords": [
+    "fastify",
+    "schema",
+    "additionalProperties"
+  ],
+  "author": "Giacomo Gregoletto",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greguz/fastify-no-additional-properties.git"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "fastify-plugin": "^1.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
