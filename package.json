@@ -1,7 +1,7 @@
 {
   "name": "fastify-no-additional-properties",
   "version": "0.3.0",
-  "description": "Make additionalProperties false by default",
+  "description": "Add additionalProperties: false by default to your JSON Schemas",
   "main": "index.js",
   "scripts": {
     "test:lint": "eslint index.js tests",

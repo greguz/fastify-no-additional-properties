@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/fastify-no-additional-properties.svg)](https://badge.fury.io/js/fastify-no-additional-properties) [![Dependencies Status](https://david-dm.org/greguz/fastify-no-additional-properties.svg)](https://david-dm.org/greguz/fastify-no-additional-properties.svg) [![Build Status](https://travis-ci.com/greguz/fastify-no-additional-properties.svg?branch=master)](https://travis-ci.com/greguz/fastify-no-additional-properties) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Make `additionalProperties: false` by default.
+Add `additionalProperties: false` by default to your JSON Schemas.
 
 ## Install
 
