@@ -9,7 +9,8 @@ function buildFastify () {
       a: {
         type: 'integer'
       }
-    }
+    },
+    additionalProperties: true
   }
 
   const app = fastify()
@@ -43,7 +44,7 @@ function buildFastify () {
   return app
 }
 
-test('timing test', t => {
+test('defined', t => {
   t.plan(10)
 
   const app = buildFastify()
@@ -68,15 +69,15 @@ test('timing test', t => {
     const data = JSON.parse(response.payload)
 
     t.strictEqual(data.body.a, 0)
-    t.strictEqual(data.body.b, undefined)
+    t.strictEqual(data.body.b, '1')
 
     t.strictEqual(data.headers.a, 0)
-    t.strictEqual(data.headers.b, undefined)
+    t.strictEqual(data.headers.b, '1')
 
     t.strictEqual(data.params.a, 0)
-    t.strictEqual(data.params.b, undefined)
+    t.strictEqual(data.params.b, '1')
 
     t.strictEqual(data.query.a, 0)
-    t.strictEqual(data.query.b, undefined)
+    t.strictEqual(data.query.b, '1')
   })
 })
