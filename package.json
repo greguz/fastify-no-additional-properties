@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test:lint": "eslint index.js tests",
-    "test:unit": "tape tests/**/*.js | tap-min",
+    "test:unit": "nyc tape tests/*.js | tap-nyc",
     "test": "npm run test:lint && npm run test:unit",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prepublishOnly": "npm run test"
   },
   "keywords": [
@@ -27,6 +28,7 @@
     "fastify-plugin": "^1.6.0"
   },
   "devDependencies": {
+    "coveralls": "^3.0.5",
     "eslint": "^6.1.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-import": "^2.18.2",
@@ -34,7 +36,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "fastify": "^2.6.0",
-    "tap-min": "^2.0.0",
+    "nyc": "^14.1.1",
+    "tap-nyc": "^1.0.3",
     "tape": "^4.11.0"
   }
 }
