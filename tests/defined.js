@@ -10,6 +10,7 @@ function buildFastify () {
         type: 'integer'
       }
     },
+    required: ['a', 'b'],
     additionalProperties: true
   }
 

@@ -3,16 +3,6 @@ const fastify = require('fastify')
 const noAdditionalProperties = require('../index')
 
 function buildFastify () {
-  const schema = {
-    type: 'object',
-    properties: {
-      a: {
-        type: 'integer'
-      }
-    },
-    required: ['a']
-  }
-
   const app = fastify()
 
   app.register(noAdditionalProperties, {
@@ -32,19 +22,13 @@ function buildFastify () {
         params: request.params,
         query: request.query
       })
-    },
-    schema: {
-      body: schema,
-      headers: schema,
-      params: schema,
-      querystring: schema
     }
   })
 
   return app
 }
 
-test('default', t => {
+test('undefined', t => {
   t.plan(10)
 
   const app = buildFastify()
@@ -68,16 +52,16 @@ test('default', t => {
 
     const data = JSON.parse(response.payload)
 
-    t.strictEqual(data.body.a, 0)
-    t.strictEqual(data.body.b, undefined)
+    t.strictEqual(data.body.a, '0')
+    t.strictEqual(data.body.b, '1')
 
-    t.strictEqual(data.headers.a, 0)
-    t.strictEqual(data.headers.b, undefined)
+    t.strictEqual(data.headers.a, '0')
+    t.strictEqual(data.headers.b, '1')
 
-    t.strictEqual(data.params.a, 0)
-    t.strictEqual(data.params.b, undefined)
+    t.strictEqual(data.params.a, '0')
+    t.strictEqual(data.params.b, '1')
 
-    t.strictEqual(data.query.a, 0)
-    t.strictEqual(data.query.b, undefined)
+    t.strictEqual(data.query.a, '0')
+    t.strictEqual(data.query.b, '1')
   })
 })

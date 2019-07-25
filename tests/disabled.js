@@ -10,16 +10,16 @@ function buildFastify () {
         type: 'integer'
       }
     },
-    required: ['a']
+    required: ['a', 'b']
   }
 
   const app = fastify()
 
   app.register(noAdditionalProperties, {
-    body: true,
-    headers: true,
-    params: true,
-    query: true
+    body: false,
+    headers: false,
+    params: false,
+    query: false
   })
 
   app.route({
@@ -44,7 +44,7 @@ function buildFastify () {
   return app
 }
 
-test('default', t => {
+test('disabled', t => {
   t.plan(10)
 
   const app = buildFastify()
@@ -53,11 +53,11 @@ test('default', t => {
     method: 'POST',
     url: '/foo/0/1?a=0&b=1',
     headers: {
-      a: '0',
+      a: 0,
       b: '1'
     },
     payload: {
-      a: '0',
+      a: 0,
       b: '1'
     }
   }, (err, response) => {
@@ -69,15 +69,15 @@ test('default', t => {
     const data = JSON.parse(response.payload)
 
     t.strictEqual(data.body.a, 0)
-    t.strictEqual(data.body.b, undefined)
+    t.strictEqual(data.body.b, '1')
 
     t.strictEqual(data.headers.a, 0)
-    t.strictEqual(data.headers.b, undefined)
+    t.strictEqual(data.headers.b, '1')
 
     t.strictEqual(data.params.a, 0)
-    t.strictEqual(data.params.b, undefined)
+    t.strictEqual(data.params.b, '1')
 
     t.strictEqual(data.query.a, 0)
-    t.strictEqual(data.query.b, undefined)
+    t.strictEqual(data.query.b, '1')
   })
 })
