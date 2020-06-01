@@ -12,6 +12,7 @@
   },
   "keywords": [
     "fastify",
+    "json",
     "schema",
     "additionalProperties"
   ],
@@ -28,16 +29,16 @@
     "fastify-plugin": "^1.6.1"
   },
   "devDependencies": {
-    "coveralls": "^3.0.11",
-    "eslint": "^6.8.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "fastify": "^2.13.0",
-    "nyc": "^15.0.0",
+    "fastify": "^2.14.1",
+    "nyc": "^15.1.0",
     "tap-nyc": "^1.0.3",
-    "tape": "^4.13.2"
+    "tape": "^5.0.1"
   }
 }
