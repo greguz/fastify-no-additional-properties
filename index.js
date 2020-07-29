@@ -56,6 +56,6 @@ function plugin (fastify, options, callback) {
 }
 
 module.exports = makePlugin(plugin, {
-  fastify: '^2.0.0 || ^3.0.0',
-  name: 'no-additional-properties'
+  fastify: '^3.0.0',
+  name: 'fastify-no-additional-properties'
 })
