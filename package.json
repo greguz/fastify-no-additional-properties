@@ -1,6 +1,6 @@
 {
   "name": "fastify-no-additional-properties",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Add additionalProperties: false by default to your JSON Schemas",
   "main": "index.js",
   "scripts": {
