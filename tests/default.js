@@ -1,17 +1,12 @@
 const test = require('tape')
 const fastify = require('fastify')
+const S = require('fluent-schema').default
 const noAdditionalProperties = require('../index')
 
 function buildFastify () {
-  const schema = {
-    type: 'object',
-    properties: {
-      a: {
-        type: 'integer'
-      }
-    },
-    required: ['a']
-  }
+  const schema = S.object()
+    .prop('a', S.integer())
+    .required()
 
   const app = fastify()
 

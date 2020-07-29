@@ -38,16 +38,16 @@ function plugin (fastify, options, callback) {
   fastify.addHook('onRoute', route => {
     if (route.schema) {
       if (route.schema.body && options.body) {
-        route.schema.body = updateSchema(route.schema.body)
+        route.schema.body = updateSchema(route.schema.body.valueOf())
       }
       if (route.schema.headers && options.headers) {
-        route.schema.headers = updateSchema(route.schema.headers)
+        route.schema.headers = updateSchema(route.schema.headers.valueOf())
       }
       if (route.schema.params && options.params) {
-        route.schema.params = updateSchema(route.schema.params)
+        route.schema.params = updateSchema(route.schema.params.valueOf())
       }
       if (route.schema.querystring && options.query) {
-        route.schema.querystring = updateSchema(route.schema.querystring)
+        route.schema.querystring = updateSchema(route.schema.querystring.valueOf())
       }
     }
   })
