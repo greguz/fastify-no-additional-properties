@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:lint": "eslint index.js tests",
-    "test:unit": "nyc tape tests/*.js | tap-nyc",
+    "test:unit": "nyc --reporter=lcov --reporter=text-summary tape tests/*.js | tap-nyc",
     "test": "npm run test:lint && npm run test:unit",
     "prepublishOnly": "npm test"
   },
