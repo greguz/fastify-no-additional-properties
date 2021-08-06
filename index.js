@@ -30,9 +30,10 @@ function plugin (fastify, options, callback) {
       body: true,
       headers: false,
       params: false,
-      query: true
+      query: false,
+      response: false
     },
-    options
+    options || {}
   )
 
   fastify.addHook('onRoute', route => {
@@ -47,7 +48,15 @@ function plugin (fastify, options, callback) {
         route.schema.params = updateSchema(route.schema.params.valueOf())
       }
       if (route.schema.querystring && options.query) {
-        route.schema.querystring = updateSchema(route.schema.querystring.valueOf())
+        route.schema.querystring = updateSchema(
+          route.schema.querystring.valueOf()
+        )
+      }
+      if (route.schema.response) {
+        route.schema.response = mapValues(
+          route.schema.response,
+          schema => updateSchema(schema.valueOf())
+        )
       }
     }
   })

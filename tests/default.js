@@ -14,7 +14,8 @@ function buildFastify () {
     body: true,
     headers: true,
     params: true,
-    query: true
+    query: true,
+    response: true
   })
 
   app.route({
@@ -22,6 +23,8 @@ function buildFastify () {
     url: '/foo/:a/:b',
     handler (request, reply) {
       reply.send({
+        a: '0',
+        b: '1',
         body: request.body,
         headers: request.headers,
         params: request.params,
@@ -32,7 +35,15 @@ function buildFastify () {
       body: schema,
       headers: schema,
       params: schema,
-      querystring: schema
+      querystring: schema,
+      response: {
+        200: S.object()
+          .prop('body')
+          .prop('headers')
+          .prop('params')
+          .prop('query')
+          .extend(schema)
+      }
     }
   })
 
@@ -40,7 +51,7 @@ function buildFastify () {
 }
 
 test('default', t => {
-  t.plan(10)
+  t.plan(12)
 
   const app = buildFastify()
 
@@ -74,5 +85,8 @@ test('default', t => {
 
     t.strictEqual(data.query.a, 0)
     t.strictEqual(data.query.b, undefined)
+
+    t.strictEqual(data.a, 0)
+    t.strictEqual(data.b, undefined)
   })
 })
