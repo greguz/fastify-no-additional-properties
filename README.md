@@ -8,6 +8,12 @@
 
 Add `additionalProperties: false` by default to your JSON Schemas.
 
+Under Fastify, when a JSON schema is defined without the `additionalProperties` field, the output will be the same as defining It as `true`. I think that this is somehow counterintuitive.
+
+This plugin will default that field to `false` by default. It's also possible to configure which schema needs to be updated.
+
+All schemas are updated by copying the entire definition, so the source objects are left untouched.
+
 ## Install
 
 ```
@@ -16,24 +22,38 @@ npm install --save fastify-no-additional-properties
 
 ## Usage
 
-Register this plugin and you are done!
-
 ```javascript
 const fastify = require('fastify')()
 
-// Default options
 fastify.register(require('fastify-no-additional-properties'), {
-  // Enable this plugin for body schema
+  /**
+   * If true, update the request body schema.
+   * @default true
+   */
   body: true,
-  // Enable this plugin for request headers schema
+  /**
+   * If true, update the request headers schema.
+   * @default false
+   */
   headers: false,
-  // Enable this plugin for URL parameters schema
+  /**
+   * If true, update the URL parameters schema.
+   * @default false
+   */
   params: false,
-  // Enable this plugin for query string schema
-  query: true
+  /**
+   * If true, update the URL querystring schema.
+   * @default true
+   */
+  query: true,
+  /**
+   * If true, update all response schemas.
+   * @default false
+   */
+  response: false
 })
 
-// Register web routes here...
+// From here, all registered routes will have additionalProperties: false by default.
 
 fastify.listen(3000, err => {
   if (err) throw err
