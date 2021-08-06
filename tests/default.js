@@ -1,6 +1,6 @@
 const test = require('tape')
 const fastify = require('fastify')
-const S = require('fluent-schema').default
+const S = require('fluent-json-schema').default
 const noAdditionalProperties = require('../index')
 
 function buildFastify () {
