@@ -30,10 +30,10 @@ function plugin (fastify, options, callback) {
       body: true,
       headers: false,
       params: false,
-      query: false,
+      query: true,
       response: false
     },
-    options || {}
+    options
   )
 
   fastify.addHook('onRoute', route => {
