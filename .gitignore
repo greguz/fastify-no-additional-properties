@@ -1,5 +1,6 @@
-.vscode
-node_modules
-npm-debug.log
-.nyc_output
-coverage
+/.nyc_output
+/.vscode
+/coverage
+/node_modules
+/npm-debug.log
+/package-lock.json
