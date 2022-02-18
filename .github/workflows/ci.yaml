@@ -25,6 +25,9 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Lint
+        run: npm run lint --if-present
+
       - name: Build
         run: npm run build --if-present
 

@@ -4,10 +4,9 @@
   "description": "Add additionalProperties: false by default to your JSON Schemas",
   "main": "index.js",
   "scripts": {
-    "test:lint": "eslint index.js tests",
-    "test:unit": "nyc --reporter=lcov --reporter=text-summary tape tests/*.js | tap-nyc",
-    "test": "npm run test:lint && npm run test:unit",
-    "prepublishOnly": "npm test"
+    "lint": "standard index.js tests",
+    "test": "nyc --reporter=lcov --reporter=text-summary tape tests/*.js",
+    "prepublishOnly": "npm run lint && npm run test"
   },
   "keywords": [
     "fastify",
@@ -25,19 +24,13 @@
     "index.js"
   ],
   "dependencies": {
-    "fastify-plugin": "^3.0.0"
+    "fastify-plugin": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "fastify": "^3.20.1",
+    "fastify": "^3.27.1",
     "fluent-json-schema": "^3.0.1",
     "nyc": "^15.1.0",
-    "standard": "^16.0.3",
-    "tap-nyc": "^1.0.3",
-    "tape": "^5.3.0"
+    "standard": "^16.0.4",
+    "tape": "^5.5.2"
   }
 }
