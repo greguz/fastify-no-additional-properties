@@ -2,7 +2,7 @@
   "name": "fastify-no-additional-properties",
   "version": "2.2.0",
   "description": "Add additionalProperties: false by default to your JSON Schemas",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "lint": "standard index.js tests",
     "test": "nyc --reporter=lcov --reporter=text-summary tape tests/*.js",
@@ -27,10 +27,10 @@
     "fastify-plugin": "^3.0.1"
   },
   "devDependencies": {
-    "fastify": "^3.27.1",
-    "fluent-json-schema": "^3.0.1",
+    "fastify": "^4.0.1",
+    "fluent-json-schema": "^3.1.0",
     "nyc": "^15.1.0",
-    "standard": "^16.0.4",
-    "tape": "^5.5.2"
+    "standard": "^17.0.0",
+    "tape": "^5.5.3"
   }
 }
