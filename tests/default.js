@@ -1,16 +1,16 @@
-const test = require('tape')
-const fastify = require('fastify')
+const test = require('ava')
+const Fastify = require('fastify')
 const S = require('fluent-json-schema').default
+
 const noAdditionalProperties = require('../index')
 
-function buildFastify () {
-  const schema = S.object()
-    .prop('a', S.integer())
-    .required()
+test('default', async t => {
+  t.plan(2)
 
-  const app = fastify()
+  const fastify = Fastify()
+  t.teardown(() => fastify.close())
 
-  app.register(noAdditionalProperties, {
+  await fastify.register(noAdditionalProperties, {
     body: true,
     headers: true,
     params: true,
@@ -18,7 +18,11 @@ function buildFastify () {
     response: true
   })
 
-  app.route({
+  const schema = S.object()
+    .prop('a', S.integer())
+    .required()
+
+  fastify.route({
     method: 'POST',
     url: '/foo/:a/:b',
     handler (request, reply) {
@@ -47,15 +51,7 @@ function buildFastify () {
     }
   })
 
-  return app
-}
-
-test('default', t => {
-  t.plan(12)
-
-  const app = buildFastify()
-
-  app.inject({
+  const response = await fastify.inject({
     method: 'POST',
     url: '/foo/0/1?a=0&b=1',
     headers: {
@@ -66,27 +62,30 @@ test('default', t => {
       a: '0',
       b: '1'
     }
-  }, (err, response) => {
-    app.close()
+  })
 
-    t.error(err)
-    t.strictEqual(response.statusCode, 200)
+  t.like(response, {
+    statusCode: 200
+  })
 
-    const data = JSON.parse(response.payload)
-
-    t.strictEqual(data.body.a, 0)
-    t.strictEqual(data.body.b, undefined)
-
-    t.strictEqual(data.headers.a, 0)
-    t.strictEqual(data.headers.b, undefined)
-
-    t.strictEqual(data.params.a, 0)
-    t.strictEqual(data.params.b, undefined)
-
-    t.strictEqual(data.query.a, 0)
-    t.strictEqual(data.query.b, undefined)
-
-    t.strictEqual(data.a, 0)
-    t.strictEqual(data.b, undefined)
+  t.like(JSON.parse(response.payload), {
+    params: {
+      a: 0,
+      b: undefined
+    },
+    query: {
+      a: 0,
+      b: undefined
+    },
+    headers: {
+      a: 0,
+      b: undefined
+    },
+    body: {
+      a: 0,
+      b: undefined
+    },
+    a: 0,
+    b: undefined
   })
 })

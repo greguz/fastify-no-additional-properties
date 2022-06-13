@@ -1,18 +1,22 @@
-const test = require('tape')
-const fastify = require('fastify')
+const test = require('ava')
+const Fastify = require('fastify')
+
 const noAdditionalProperties = require('../index')
 
-function buildFastify () {
-  const app = fastify()
+test('undefined', async t => {
+  t.plan(2)
 
-  app.register(noAdditionalProperties, {
+  const fastify = Fastify()
+  t.teardown(() => fastify.close())
+
+  await fastify.register(noAdditionalProperties, {
     body: true,
     headers: true,
     params: true,
     query: true
   })
 
-  app.route({
+  fastify.route({
     method: 'POST',
     url: '/foo/:a/:b',
     handler (request, reply) {
@@ -25,15 +29,7 @@ function buildFastify () {
     }
   })
 
-  return app
-}
-
-test('undefined', t => {
-  t.plan(10)
-
-  const app = buildFastify()
-
-  app.inject({
+  const response = await fastify.inject({
     method: 'POST',
     url: '/foo/0/1?a=0&b=1',
     headers: {
@@ -44,24 +40,28 @@ test('undefined', t => {
       a: '0',
       b: '1'
     }
-  }, (err, response) => {
-    app.close()
+  })
 
-    t.error(err)
-    t.strictEqual(response.statusCode, 200)
+  t.like(response, {
+    statusCode: 200
+  })
 
-    const data = JSON.parse(response.payload)
-
-    t.strictEqual(data.body.a, '0')
-    t.strictEqual(data.body.b, '1')
-
-    t.strictEqual(data.headers.a, '0')
-    t.strictEqual(data.headers.b, '1')
-
-    t.strictEqual(data.params.a, '0')
-    t.strictEqual(data.params.b, '1')
-
-    t.strictEqual(data.query.a, '0')
-    t.strictEqual(data.query.b, '1')
+  t.like(JSON.parse(response.payload), {
+    params: {
+      a: '0',
+      b: '1'
+    },
+    query: {
+      a: '0',
+      b: '1'
+    },
+    headers: {
+      a: '0',
+      b: '1'
+    },
+    body: {
+      a: '0',
+      b: '1'
+    }
   })
 })
