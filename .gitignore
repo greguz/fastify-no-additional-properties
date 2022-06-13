@@ -1,6 +1,7 @@
-/.nyc_output
-/.vscode
-/coverage
-/node_modules
-/npm-debug.log
-/package-lock.json
+.*
+!.editorconfig
+!.github
+*.log
+coverage
+node_modules
+package-lock.json
