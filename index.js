@@ -52,7 +52,7 @@ function plugin (fastify, options, callback) {
           route.schema.querystring.valueOf()
         )
       }
-      if (route.schema.response) {
+      if (route.schema.response && options.response) {
         route.schema.response = mapValues(
           route.schema.response,
           schema => updateSchema(schema.valueOf())
