@@ -23,7 +23,9 @@ npm install --save fastify-no-additional-properties
 ## Usage
 
 ```javascript
-const fastify = require('fastify')()
+const fastify = require('fastify')({
+  logger: true
+})
 
 fastify.register(require('fastify-no-additional-properties'), {
   /**
@@ -55,7 +57,11 @@ fastify.register(require('fastify-no-additional-properties'), {
 
 // From here, all registered routes will have additionalProperties: false by default.
 
-fastify.listen(3000, err => {
-  if (err) throw err
+fastify.listen({ port: 3000 }, (err, address) => {
+  if (err) {
+    fastify.log.fatal({ err }, 'bootstrap failed')
+    process.exit(1)
+  }
+  // Server is now listening on ${address}
 })
 ```
