@@ -3,6 +3,7 @@
   "version": "2.3.0",
   "description": "Add additionalProperties: false by default to your JSON Schemas",
   "main": "./fnap.js",
+  "types": "./fnap.d.ts",
   "scripts": {
     "lint": "standard",
     "test": "c8 ava",
@@ -21,7 +22,8 @@
     "url": "https://github.com/greguz/fastify-no-additional-properties.git"
   },
   "files": [
-    "fnap.js"
+    "fnap.js",
+    "fnap.d.ts"
   ],
   "dependencies": {
     "fastify-plugin": "^4.5.1"
