@@ -1,6 +1,6 @@
 # fastify-no-additional-properties
 
-[![npm version](https://badge.fury.io/js/fastify-no-additional-properties.svg)](https://badge.fury.io/js/fastify-no-additional-properties)
+[![npm version](https://badge.fury.io/js/fastify-no-additional-properties.svg)](https://www.npmjs.com/package/fastify-no-additional-properties)
 [![Dependencies Status](https://david-dm.org/greguz/fastify-no-additional-properties.svg)](https://david-dm.org/greguz/fastify-no-additional-properties.svg)
 ![ci](https://github.com/greguz/fastify-no-additional-properties/workflows/ci/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/greguz/fastify-no-additional-properties/badge.svg?branch=master)](https://coveralls.io/github/greguz/fastify-no-additional-properties?branch=master)

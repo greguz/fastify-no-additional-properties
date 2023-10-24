@@ -2,7 +2,7 @@
   "name": "fastify-no-additional-properties",
   "version": "2.3.0",
   "description": "Add additionalProperties: false by default to your JSON Schemas",
-  "main": "./index.js",
+  "main": "./fnap.js",
   "scripts": {
     "lint": "standard",
     "test": "c8 ava",
@@ -14,14 +14,14 @@
     "schema",
     "additionalProperties"
   ],
-  "author": "Giacomo Gregoletto",
+  "author": "Giacomo Gregoletto <gregolettogiacomo@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/greguz/fastify-no-additional-properties.git"
   },
   "files": [
-    "index.js"
+    "fnap.js"
   ],
   "dependencies": {
     "fastify-plugin": "^4.5.1"

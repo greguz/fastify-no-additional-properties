@@ -1,7 +1,7 @@
 const test = require('ava')
 const Fastify = require('fastify')
 
-const noAdditionalProperties = require('../index')
+const noAdditionalProperties = require('../fnap.js')
 
 test('defined', async t => {
   t.plan(2)

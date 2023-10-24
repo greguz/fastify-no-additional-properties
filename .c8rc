@@ -2,9 +2,9 @@
   "all": true,
   "reporter": ["html", "lcov", "text"],
   "include": [
-    "index.js"
+    "fnap.js"
   ],
   "exclude": [
-    "tests"
+    "test"
   ]
 }

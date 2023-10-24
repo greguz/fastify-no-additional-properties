@@ -1,6 +1,6 @@
 'use strict'
 
-const makePlugin = require('fastify-plugin')
+const plugin = require('fastify-plugin')
 
 function mapValues (object, iteratee) {
   const result = {}
@@ -24,7 +24,7 @@ function updateSchema (data) {
   }
 }
 
-function plugin (fastify, options, callback) {
+function fnap (fastify, options, callback) {
   options = Object.assign(
     {
       body: true,
@@ -64,7 +64,7 @@ function plugin (fastify, options, callback) {
   callback()
 }
 
-module.exports = makePlugin(plugin, {
+module.exports = plugin(fnap, {
   fastify: '>=3.0.0',
   name: 'fastify-no-additional-properties'
 })

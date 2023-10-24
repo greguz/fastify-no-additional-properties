@@ -2,7 +2,7 @@ const test = require('ava')
 const Fastify = require('fastify')
 const S = require('fluent-json-schema').default
 
-const noAdditionalProperties = require('../index')
+const noAdditionalProperties = require('../fnap.js')
 
 test('default', async t => {
   t.plan(2)
