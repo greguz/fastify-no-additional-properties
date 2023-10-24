@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "lint": "standard",
-    "test": "nyc --reporter=lcov --reporter=text-summary ava",
+    "test": "c8 ava",
     "prepublishOnly": "npm run lint && npm run test"
   },
   "keywords": [
@@ -24,13 +24,13 @@
     "index.js"
   ],
   "dependencies": {
-    "fastify-plugin": "^3.0.1"
+    "fastify-plugin": "^4.5.1"
   },
   "devDependencies": {
-    "ava": "^4.3.0",
-    "fastify": "^4.0.1",
-    "fluent-json-schema": "^3.1.0",
-    "nyc": "^15.1.0",
-    "standard": "^17.0.0"
+    "ava": "^5.3.1",
+    "c8": "^8.0.1",
+    "fastify": "^4.24.3",
+    "fluent-json-schema": "^4.1.2",
+    "standard": "^17.1.0"
   }
 }

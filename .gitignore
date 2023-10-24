@@ -1,5 +1,5 @@
 .*
-!.editorconfig
+!.c8rc
 !.github
 *.log
 coverage
