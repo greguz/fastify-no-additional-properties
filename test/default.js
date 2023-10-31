@@ -1,8 +1,8 @@
-const test = require('ava')
-const Fastify = require('fastify')
-const S = require('fluent-json-schema').default
+import test from 'ava'
+import Fastify from 'fastify'
+import S from 'fluent-json-schema'
 
-const noAdditionalProperties = require('../fnap.js')
+import noAdditionalProperties from '../fnap.mjs'
 
 test('default', async t => {
   t.plan(2)

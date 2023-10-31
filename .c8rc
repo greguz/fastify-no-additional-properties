@@ -2,7 +2,7 @@
   "all": true,
   "reporter": ["html", "lcov", "text"],
   "include": [
-    "fnap.js"
+    "fnap.mjs"
   ],
   "exclude": [
     "test"

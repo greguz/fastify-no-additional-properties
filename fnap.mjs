@@ -1,12 +1,10 @@
-'use strict'
-
-const plugin = require('fastify-plugin')
+import plugin from 'fastify-plugin'
 
 function mapValues (object, iteratee) {
   const result = {}
-  Object.keys(object).forEach(key => {
+  for (const key of Object.keys(object)) {
     result[key] = iteratee(object[key], key, object)
-  })
+  }
   return result
 }
 
@@ -64,7 +62,7 @@ function fnap (fastify, options, callback) {
   callback()
 }
 
-module.exports = plugin(fnap, {
+export default plugin(fnap, {
   fastify: '>=3.0.0',
   name: 'fastify-no-additional-properties'
 })

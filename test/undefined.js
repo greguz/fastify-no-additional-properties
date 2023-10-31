@@ -1,7 +1,7 @@
-const test = require('ava')
-const Fastify = require('fastify')
+import test from 'ava'
+import Fastify from 'fastify'
 
-const noAdditionalProperties = require('../fnap.js')
+import noAdditionalProperties from '../fnap.mjs'
 
 test('undefined', async t => {
   t.plan(2)
@@ -9,24 +9,24 @@ test('undefined', async t => {
   const fastify = Fastify()
   t.teardown(() => fastify.close())
 
+  fastify.route({
+    method: 'POST',
+    url: '/foo/:a/:b',
+    async handler (request) {
+      return {
+        body: request.body,
+        headers: request.headers,
+        params: request.params,
+        query: request.query
+      }
+    }
+  })
+
   await fastify.register(noAdditionalProperties, {
     body: true,
     headers: true,
     params: true,
     query: true
-  })
-
-  fastify.route({
-    method: 'POST',
-    url: '/foo/:a/:b',
-    handler (request, reply) {
-      reply.send({
-        body: request.body,
-        headers: request.headers,
-        params: request.params,
-        query: request.query
-      })
-    }
   })
 
   const response = await fastify.inject({

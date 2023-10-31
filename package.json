@@ -2,12 +2,19 @@
   "name": "fastify-no-additional-properties",
   "version": "2.4.0",
   "description": "Add additionalProperties: false by default to your JSON Schemas",
-  "main": "./fnap.js",
+  "type": "module",
+  "exports": {
+    "import": "./fnap.mjs",
+    "require": "./fnap.cjs",
+    "types": "./fnap.d.ts"
+  },
+  "main": "./fnap.cjs",
   "types": "./fnap.d.ts",
   "scripts": {
+    "build": "rollup -c",
     "lint": "standard",
     "test": "c8 ava",
-    "prepublishOnly": "npm run lint && npm run test"
+    "prepublishOnly": "npm run lint && npm run build && npm test"
   },
   "keywords": [
     "fastify",
@@ -22,7 +29,8 @@
     "url": "https://github.com/greguz/fastify-no-additional-properties.git"
   },
   "files": [
-    "fnap.js",
+    "fnap.cjs",
+    "fnap.mjs",
     "fnap.d.ts"
   ],
   "dependencies": {
@@ -33,6 +41,12 @@
     "c8": "^8.0.1",
     "fastify": "^4.24.3",
     "fluent-json-schema": "^4.1.2",
+    "rollup": "^4.2.0",
     "standard": "^17.1.0"
+  },
+  "ava": {
+    "environmentVariables": {
+      "NODE_ENV": "test"
+    }
   }
 }

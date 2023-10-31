@@ -1,7 +1,7 @@
-const test = require('ava')
-const Fastify = require('fastify')
+import test from 'ava'
+import Fastify from 'fastify'
 
-const noAdditionalProperties = require('../fnap.js')
+import noAdditionalProperties from '../fnap.mjs'
 
 test('defined', async t => {
   t.plan(2)
