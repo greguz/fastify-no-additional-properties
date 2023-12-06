@@ -1,7 +1,7 @@
 # fastify-no-additional-properties
 
 [![npm version](https://badge.fury.io/js/fastify-no-additional-properties.svg)](https://www.npmjs.com/package/fastify-no-additional-properties)
-[![Dependencies Status](https://david-dm.org/greguz/fastify-no-additional-properties.svg)](https://david-dm.org/greguz/fastify-no-additional-properties.svg)
+![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/fastify-no-additional-properties)
 ![ci](https://github.com/greguz/fastify-no-additional-properties/workflows/ci/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/greguz/fastify-no-additional-properties/badge.svg?branch=master)](https://coveralls.io/github/greguz/fastify-no-additional-properties?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -14,6 +14,14 @@ This plugin will default that field to `false` by default. It's also possible to
 
 All schemas are updated by copying the entire definition, so the source objects are left untouched.
 
+## Features
+
+- **Zero dependencies**: small footprint (ignoring `fastify-plugin`).
+- **ESM**: future proof for the next Node.js releases.
+- **Common.js support**: still compatible with older runtimes.
+- **Sane defaults**: I suppose.
+- **TypeScript**: types declaration included.
+
 ## Install
 
 ```
@@ -23,11 +31,14 @@ npm install --save fastify-no-additional-properties
 ## Usage
 
 ```javascript
-const fastify = require('fastify')({
+import Fastify from 'fastify'
+import noAdditionalProperties from 'fastify-no-additional-properties'
+
+const fastify = Fastify({
   logger: true
 })
 
-fastify.register(require('fastify-no-additional-properties'), {
+fastify.register(noAdditionalProperties, {
   /**
    * If true, update the request body schema.
    * @default true
@@ -55,7 +66,7 @@ fastify.register(require('fastify-no-additional-properties'), {
   response: false
 })
 
-// From here, all registered routes will have additionalProperties: false by default.
+// From now on, all registered routes will have additionalProperties: false by default.
 
 fastify.listen({ port: 3000 }, (err, address) => {
   if (err) {

@@ -13,13 +13,19 @@ function updateSchema (data) {
     return data.map(updateSchema)
   } else if (typeof data === 'object' && data !== null) {
     const result = mapValues(data, updateSchema)
-    if (result.type === 'object') {
+    if (isObjectType(result)) {
       result.additionalProperties = result.additionalProperties || false
     }
     return result
   } else {
     return data
   }
+}
+
+function isObjectType ({ type }) {
+  return Array.isArray(type)
+    ? type.includes('object')
+    : type === 'object'
 }
 
 function fnap (fastify, options, callback) {
