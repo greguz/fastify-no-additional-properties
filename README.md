@@ -63,7 +63,12 @@ fastify.register(noAdditionalProperties, {
    * If true, update all response schemas.
    * @default false
    */
-  response: false
+  response: false,
+  /**
+   * If true, update schemas registered **AFTER** this plugin registration.
+   * @default false
+   */
+  ref: false
 })
 
 // From now on, all registered routes will have additionalProperties: false by default.
