@@ -26,6 +26,11 @@ export interface FastifyNoAdditionalPropertiesOptions {
    * @default false
    */
   response?: boolean
+  /**
+   * If true, update schemas registered **AFTER** this plugin registration.
+   * @default false
+   */
+  ref?: boolean
 }
 
 declare const plugin: FastifyPluginCallback<FastifyNoAdditionalPropertiesOptions>
