@@ -28,6 +28,12 @@ All schemas are updated by copying the entire definition, so the source objects 
 npm install --save fastify-no-additional-properties
 ```
 
+### Fastify version support
+
+This plugin now targets Fastify v5.
+
+Use `npm install fastify-no-additional-properties@^2.5.0` for Fastify v4.
+
 ## Usage
 
 ```javascript
