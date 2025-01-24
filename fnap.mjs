@@ -44,12 +44,14 @@ function fnap (fastify, options, done) {
   }
 
   if (opts.ref) {
+    const key = Symbol('fnap-add-schema')
+
     // This will lead to a bad idea :D
-    const addSchemaBound = fastify.addSchema.bind(fastify)
+    fastify[key] = fastify.addSchema
 
     // ...return to monke
     fastify.addSchema = function fnapAddSchema (schema) {
-      return addSchemaBound(
+      return this[key](
         isObjectLike(schema)
           ? updateSchema(schema.valueOf())
           : schema

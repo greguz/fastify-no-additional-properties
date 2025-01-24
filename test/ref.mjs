@@ -48,3 +48,27 @@ test('ref', async t => {
   t.like(response, { statusCode: 200 })
   t.deepEqual(JSON.parse(response.payload), { value: 42 })
 })
+
+test('ref with rncapsulation', async t => {
+  t.plan(1)
+
+  const fastify = Fastify()
+  t.teardown(() => fastify.close())
+
+  fastify.register(noAdditionalProperties, { ref: true })
+
+  fastify.register(async f => {
+    f.addSchema({
+      $id: 'http://example.com/',
+      type: 'object',
+      properties: {
+        value: {
+          type: 'integer'
+        }
+      }
+    })
+  })
+
+  await fastify.ready()
+  t.pass()
+})
